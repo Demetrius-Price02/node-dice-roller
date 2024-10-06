@@ -17,10 +17,16 @@
     let rollcounter = 0
 	async function rolldice() {
 		rollcounter++
-		const response = await fetch("/d6")
+		const ran = document.getElementById("random").value
+		
+		const fetchString = "/d6?ran="+ran
+		const response = await fetch(fetchString)
 		const responseText = await response.text()
+		console.log(responseText)
 		document.getElementById("diceroll-result").innerHTML = responseText + " ("+rollcounter+")"
 	}
+
+	rolldice()
 </script>   
 </body>
 </html>
