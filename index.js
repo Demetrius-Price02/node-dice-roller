@@ -18,5 +18,6 @@ app.use(cors({ origin: '*' }))
 app.get('/d6', (request, response) => {
 	console.log('Calling "/d6" on the Node.js server.')
 	response.type('text/plain')
-	response.send(Math.floor(Math.random() * 6 + 1))
+	let roll = Math.floor(Math.random() * 6 + 1)
+	response.send(roll.toString)
 })
