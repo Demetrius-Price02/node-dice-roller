@@ -1,6 +1,10 @@
 const express = require('express')
 app = express()
 
+const cors = require("cors")
+
+var url = require('url');
+
 const port = process.env.PORT || 3000
 const majorVersion = 1
 const minorVersion = 3
@@ -12,6 +16,11 @@ app.use(cors({ origin: '*' }))
 // Return rnadom number between 1 and 6.
 app.get('/d6', (request, response) => {
 	console.log('Calling "/d6" on the Node.js server.')
-	response.type('text/plain')
-	response.send(Math.floor(Math.random() * 6 + 1))
+	const ran = Math.floor(Math.random() * 6 + 1)
+	response.json({Number: ran})
 })
+
+app.listen(port, () => console.log(
+	`Express started at \"http://localhost:${port}\"\n` +
+	`press Ctrl-C to terminate.`)
+  )
